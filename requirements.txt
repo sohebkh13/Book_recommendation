@@ -15,6 +15,3 @@ scipy>=1.7.0
 # NLP libraries (optional, for content-based recommendations)
 gensim>=4.1.2
 sentence-transformers>=2.2.0
-
-# Warning handling
-warnings
