@@ -1,18 +1,20 @@
-# Core visualization libraries
-matplotlib==3.7.1
-seaborn==0.12.2
+# Core data processing and visualization
+pandas>=1.3.0
+numpy>=1.20.0
+matplotlib>=3.3.0
+seaborn>=0.11.0
+
+# Streamlit for web interface
+streamlit>=1.10.0
 
 # Machine learning libraries
-scikit-learn==1.2.2
-surprise==0.1
-scipy==1.10.1
+scikit-learn>=1.0.0
+scikit-surprise>=1.1.1
+scipy>=1.7.0
 
-# NLP libraries (for content-based recommendations)
-# Commenting these out initially as they can be heavy
-# Uncomment if you need them
-# gensim==4.3.1
-# sentence-transformers==2.2.2
+# NLP libraries (optional, for content-based recommendations)
+gensim>=4.1.2
+sentence-transformers>=2.2.0
 
-# Already installed by Streamlit, but listing for completeness
-# pandas
-# numpy
+# Warning handling
+warnings
