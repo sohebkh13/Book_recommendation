@@ -1,27 +1,4 @@
 # Core packages with explicit versions
-"""numpy==1.26.4
-pandas==2.1.4
-matplotlib==3.8.3
-seaborn==0.13.1
-
-# Streamlit
-streamlit==1.32.0
-
-# Machine learning
-scikit-learn==1.4.0
-
-# Surprise - try a specific version with pip install option
-surprise==0.1
-
-# NLP essentials (if needed)
-gensim==4.3.2
-
-# Additional dependencies for matplotlib
-cycler==0.12.1
-kiwisolver==1.4.5
-pyparsing==3.1.1
-python-dateutil==2.8.2"""
-# Core packages with explicit versions
 numpy==1.24.3  # Downgrading to a more compatible version
 pandas==1.5.3  # More compatible with older scipy/numpy
 matplotlib==3.7.1
