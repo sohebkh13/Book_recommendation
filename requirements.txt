@@ -1,0 +1,23 @@
+# Core dependencies
+streamlit==1.28.0
+pandas==1.5.3
+numpy==1.24.3
+
+# Visualization libraries
+matplotlib==3.7.1
+seaborn==0.12.2
+
+# Machine learning libraries
+scikit-learn==1.2.2
+surprise==0.1
+scipy==1.10.1
+
+# Optional NLP libraries (only needed if you use the content-based recommendations)
+gensim==4.3.1
+sentence-transformers==2.2.2
+
+# Force install required dependencies for matplotlib
+python-dateutil>=2.8.2
+pyparsing>=3.0.9
+pillow>=9.4.0
+packaging>=23.0
