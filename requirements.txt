@@ -1,5 +1,5 @@
 # Core packages with explicit versions
-numpy==1.26.4
+"""numpy==1.26.4
 pandas==2.1.4
 matplotlib==3.8.3
 seaborn==0.13.1
@@ -20,4 +20,25 @@ gensim==4.3.2
 cycler==0.12.1
 kiwisolver==1.4.5
 pyparsing==3.1.1
-python-dateutil==2.8.2
+python-dateutil==2.8.2"""
+# Core packages with explicit versions
+numpy==1.24.3  # Downgrading to a more compatible version
+pandas==1.5.3  # More compatible with older scipy/numpy
+matplotlib==3.7.1
+seaborn==0.12.2
+
+# Streamlit
+streamlit==1.32.0
+
+# Machine learning
+scikit-learn==1.2.2
+surprise==0.1
+
+# Fixed scipy version that works with gensim
+scipy==1.10.1  # This version should have triu in scipy.linalg
+
+# NLP with specific compatible versions
+gensim==4.3.0  # Earlier version that's more compatible with scipy 1.10.1
+
+# Optional but with specific version
+sentence-transformers==2.2.2
