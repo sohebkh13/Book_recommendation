@@ -1790,7 +1790,7 @@ def main():
             ### Development Team
             
             - **Developers:** Soheb, Shafeeq, Arthi, and Navya
-            - **GitHub:** [sohebkh13/ExcelR_Book_Recommendation_Project](https://github.com/sohebkh13/book_recommendation/)
+            - **GitHub:** [sohebkh13/book_recommendation](https://github.com/sohebkh13/book_recommendation/)
             """)
         
         with about_tabs[1]:  # Technical Details tab
