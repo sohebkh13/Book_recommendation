@@ -1760,7 +1760,199 @@ def main():
                             st.write(f"**User's Rating:** {int(book['Book-Rating'])} / 10")  # Display user's rating out of 10
                 else:  # Handle case when user hasn't rated any books
                     st.warning(f"User {selected_user_id} has not rated any books.")
-    
+    elif page == "About":  # About page content
+        st.header("About This Book Recommendation System")  # Display page header
+        
+        # Create tabs for different sections of the about page
+        about_tabs = st.tabs(["Project Overview", "Technical Details", "Models & Algorithms", "Data Processing", "Error Handling"])
+        
+        with about_tabs[0]:  # Project Overview tab
+            st.subheader("Project Overview")
+            st.write("""
+            This advanced book recommendation system was developed as part of ExcelR's data science curriculum. The application 
+            analyzes reading preferences and user behavior to suggest personalized book recommendations using multiple 
+            state-of-the-art algorithms.
+            
+            The system provides:
+            - Personalized book recommendations based on user ratings
+            - Similar book discovery based on content similarity
+            - Comprehensive data exploration and visualization tools
+            - Detailed user behavior analysis
+            - Multiple recommendation models with different strengths
+            
+            ### Dataset
+            
+            The project utilizes the Book-Crossing dataset which includes:
+            - **Books**: 271,379 books with metadata (title, author, year, publisher, etc.)
+            - **Users**: 278,858 users with optional demographic information
+            - **Ratings**: 1,149,780 book ratings (explicit and implicit)
+            
+            ### Development Team
+            
+            - **Developers:** Soheb, Shafeeq, Arthi, and Navya
+            - **GitHub:** [sohebkh13/ExcelR_Book_Recommendation_Project](https://github.com/sohebkh13/ExcelR_Book_Recommendation_Project)
+            """)
+        
+        with about_tabs[1]:  # Technical Details tab
+            st.subheader("Technical Implementation")
+            st.write("""
+            ### Application Architecture
+            
+            The application is built using:
+            - **Streamlit**: For the interactive web interface
+            - **Pandas & NumPy**: For data manipulation and numerical operations
+            - **Matplotlib & Seaborn**: For data visualization
+            - **Scikit-learn**: For machine learning algorithms and evaluation metrics
+            - **Surprise**: For collaborative filtering recommendation algorithms
+            - **NLTK & Gensim**: For natural language processing and text analysis
+            - **Sentence-Transformers**: For BERT-based text embeddings
+            
+            ### Performance Optimizations
+            
+            The application implements several optimizations to handle large datasets efficiently:
+            - **Data caching**: Using `@st.cache_data` to avoid reloading data
+            - **Sampling techniques**: Dynamically sampling large datasets for visualization and modeling
+            - **Batch processing**: Processing recommendations in batches to manage memory usage
+            - **Sparse matrices**: Using scipy's sparse matrices for efficient memory usage with large user-item matrices
+            - **Progressive loading**: Using progress bars to keep users informed during computation-heavy operations
+            """)
+        
+        with about_tabs[2]:  # Models & Algorithms tab
+            st.subheader("Recommendation Models")
+            st.write("""
+            ### Collaborative Filtering Models
+            
+            1. **Original Collaborative Filtering**
+               - Identifies users with similar rating patterns
+               - Calculates weighted ratings to predict user preferences
+               - Includes diminishing weight factors for less similar users
+               - Falls back to popularity-based recommendations when needed
+               - **Example:** For a user who rated "Harry Potter and the Sorcerer's Stone" highly, might recommend "The Lord of the Rings" and "The Chronicles of Narnia" based on similar users' ratings, regardless of content similarities
+            
+            2. **K-Nearest Neighbors (KNN)**
+               - Identifies the most similar users based on common book ratings
+               - Uses cosine similarity to measure user preference patterns
+               - Optimized for memory-efficiency with large datasets
+               - Parameters: k=20 (number of neighbors)
+               - **Example:** For the same Harry Potter fan, might recommend "Percy Jackson & the Olympians" because the 20 most similar users also enjoyed that series, focusing on the closest matching users
+            
+            3. **Singular Value Decomposition (SVD)**
+               - Matrix factorization technique for dimensionality reduction
+               - Identifies latent factors in user-item interactions
+               - Implemented using the Surprise library for collaborative filtering
+               - Parameters: n_factors=50 (number of latent factors)
+               - **Example:** Might recommend "Eragon" or "A Series of Unfortunate Events" based on underlying patterns in user preferences that capture the latent "young adult fantasy" factor, even if users haven't explicitly rated both series
+            
+            4. **Non-negative Matrix Factorization (NMF)**
+               - Factorizes the rating matrix with non-negativity constraints
+               - Particularly effective for sparse rating data
+               - Memory-optimized implementation for large datasets
+               - Parameters: n_components=15 (number of components)
+               - **Example:** For Harry Potter fans, might recommend "The Golden Compass" by identifying component patterns like "British authors" or "magical coming-of-age stories" that connect these books
+            
+            ### Content-Based Filtering Models
+            
+            1. **TF-IDF (Term Frequency-Inverse Document Frequency)**
+               - Analyzes book titles, authors, and publishers
+               - Removes English stop words to focus on meaningful terms
+               - Uses cosine similarity to find books with similar content
+               - Fastest content-based approach, requiring minimal resources
+               - **Example:** For "Harry Potter and the Chamber of Secrets," would recommend other Harry Potter books first (due to exact word matches), then possibly books with "wizard" or "magic" in the title
+            
+            2. **Word Embeddings**
+               - Uses pre-trained GloVe word vectors (100-dimensional)
+               - Captures semantic relationships between words
+               - Creates document embeddings by averaging word vectors
+               - More nuanced understanding of text than TF-IDF
+               - **Example:** Would recommend "The Magicians" by Lev Grossman because terms like "wizard," "magic," and "school" are semantically related in the vector space, even if they don't share exact words with Harry Potter
+            
+            3. **BERT Embeddings**
+               - Uses SentenceTransformer with paraphrase-MiniLM-L6-v2 model
+               - State-of-the-art natural language understanding
+               - Captures complex contextual relationships in text
+               - Most advanced semantic understanding of book content
+               - **Example:** Could recommend "Jonathan Strange & Mr Norrell" by Susanna Clarke – a completely different writing style and target audience, but BERT understands the shared context of "British magical reality" and "alternative history with magic" concepts
+            """)
+            
+        with about_tabs[3]:  # Data Processing tab
+            st.subheader("Data Processing & Validation")
+            st.write("""
+            ### Data Loading & Preprocessing
+            
+            - **Multiple encoding support**: Attempts various encodings (cp1252) when reading CSV files
+            - **Missing value handling**: Comprehensive analysis and appropriate handling of missing data
+            - **Data type conversion**: Proper conversion of numeric fields with error handling
+            - **Outlier filtering**:
+              - Publication years limited to realistic range (1900-2010)
+              - User ages limited to reasonable range (5-100)
+              - Zero ratings filtered out for certain analyses
+            
+            ### Input Validation
+            
+            - **User ID validation**: Checks for existence in dataset and rating history
+            - **Book title validation**: Implements fuzzy matching for partial title inputs
+            - **Parameter validation**: Ensures recommendation counts, similarity thresholds, etc. are within acceptable ranges
+            - **Empty result handling**: Falls back to alternative recommendation sources when primary methods yield no results
+            
+            ### Data Transformation
+            
+            - **Text preprocessing**: Cleaning and normalizing book titles, authors, and publishers
+            - **Feature creation**: Combining text features for content-based analysis
+            - **Matrix creation**: Converting dataframes to user-item matrices for collaborative filtering
+            - **Vector normalization**: Normalizing feature vectors for similarity calculations
+            - **Dimensionality reduction**: Applying SVD and NMF to reduce feature dimensions
+            """)
+            
+        with about_tabs[4]:  # Error Handling tab
+            st.subheader("Error Handling & Graceful Degradation")
+            st.write("""
+            ### Comprehensive Error Handling
+            
+            - **File loading errors**: Graceful handling of missing files with informative error messages
+            - **Encoding errors**: Multiple encoding attempts with fallback options
+            - **Model loading failures**: Alternative model suggestions when primary models fail to load
+            - **Computation errors**: Try-except blocks around computational operations with fallbacks
+            - **Image loading errors**: Graceful handling of missing or invalid image URLs
+            
+            ### Fallback Mechanisms
+            
+            - **Popular book recommendations**: When user-specific recommendations cannot be generated
+            - **Method switching**: Automatic switching to simpler methods when advanced methods fail
+            - **Random sampling**: Providing random selections when all recommendation attempts fail
+            - **TF-IDF fallback**: When word embeddings or BERT models cannot be loaded
+            - **Subsampling**: Dynamically adjusting data size to prevent memory issues
+            
+            ### User Feedback
+            
+            - **Progress bars**: Visual indication of computation progress for long-running operations
+            - **Information messages**: Clear explanations when fallback mechanisms are activated
+            - **Warning messages**: Alerts about potential issues in data or recommendations
+            - **Error messages**: User-friendly explanations when errors occur
+            - **Loading spinners**: Visual feedback during data loading and processing
+            """)
+        
+        # Add contact and additional resources section
+        st.markdown("---")
+        st.subheader("Additional Resources")
+        
+        # Create columns for resources and contact info
+        res_col1, res_col2 = st.columns(2)
+        
+        with res_col1:
+            st.write("### Documentation")
+            st.markdown("""
+            - [Surprise Library Documentation](https://surprise.readthedocs.io/)
+            - [Streamlit Documentation](https://docs.streamlit.io/)
+            - [Sentence-Transformers Documentation](https://www.sbert.net/)
+            - [Book-Crossing Dataset](http://www2.informatik.uni-freiburg.de/~cziegler/BX/)
+            """)
+            
+        with res_col2:
+            st.write("### Contact")
+            st.write("For questions or suggestions about this project:")
+            st.write("📧 Email: contact@excelr-project.com")
+            st.write("🐱 GitHub Issues: [Report a Bug](https://github.com/sohebkh13/ExcelR_Book_Recommendation_Project/issues)")
+            st.write("💬 ExcelR Forums: [Project Discussion](https://forums.excelr.com/book-recommendation)")
     elif page == "About":  # About page content
         st.header("About This Project")  # Display page header
         st.write("""
