@@ -1950,9 +1950,8 @@ def main():
         with res_col2:
             st.write("### Contact")
             st.write("For questions or suggestions about this project:")
-            st.write("📧 Email: contact@excelr-project.com")
+            st.write("📧 Email: sohebkhan10@gmail.com")
             st.write("🐱 GitHub Issues: [Report a Bug](https://github.com/sohebkh13/ExcelR_Book_Recommendation_Project/issues)")
-            st.write("💬 ExcelR Forums: [Project Discussion](https://forums.excelr.com/book-recommendation)")
     elif page == "About":  # About page content
         st.header("About This Project")  # Display page header
         st.write("""
