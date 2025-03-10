@@ -1790,7 +1790,7 @@ def main():
             ### Development Team
             
             - **Developers:** Soheb, Shafeeq, Arthi, and Navya
-            - **GitHub:** [sohebkh13/ExcelR_Book_Recommendation_Project](https://github.com/sohebkh13/ExcelR_Book_Recommendation_Project)
+            - **GitHub:** [sohebkh13/ExcelR_Book_Recommendation_Project](https://github.com/sohebkh13/book_recommendation/)
             """)
         
         with about_tabs[1]:  # Technical Details tab
@@ -1950,7 +1950,7 @@ def main():
             st.write("### Contact")
             st.write("For questions or suggestions about this project:")
             st.write("📧 Email: sohebkhan10@gmail.com")
-            st.write("🐱 GitHub Issues: [Report a Bug](https://github.com/sohebkh13/ExcelR_Book_Recommendation_Project/issues)")
+            st.write("🐱 GitHub Issues: [Report a Bug](https://github.com/sohebkh13/book_recommendation/issues)")
     elif page == "About":  # About page content
         st.header("About This Project")  # Display page header
         st.write("""
