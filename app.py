@@ -1944,7 +1944,6 @@ def main():
             - [Surprise Library Documentation](https://surprise.readthedocs.io/)
             - [Streamlit Documentation](https://docs.streamlit.io/)
             - [Sentence-Transformers Documentation](https://www.sbert.net/)
-            - [Book-Crossing Dataset](http://www2.informatik.uni-freiburg.de/~cziegler/BX/)
             """)
             
         with res_col2:
